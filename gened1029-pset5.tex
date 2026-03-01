@@ -23,11 +23,15 @@ The primitive pizza hypothesis (Wächtershäuser) says life began on positively 
 
 \textbf{(b)} Without replicase enzymes the error rate is very high, too high to replicate any meaningful length of molecule reliably (the error threshold). With replicase but without proofreading, the error rate is $1/1000$ to $1/10{,}000$ per nucleotide. This is because RNA strands separate immediately after copying, so there is no way to check whether each base was paired correctly. Replicase improves accuracy significantly, but without proofreading errors are still too frequent for large genomes, which is expected since enzyme geometry alone improves selectivity but cannot catch all mistakes.
 
-\textbf{(c)} RNA is single-stranded, so there is no complementary strand to use for proofreading. With an error rate of $1/1000$ to $1/10{,}000$ and a human genome of 3 billion bases, every replication cycle would introduce millions of mutations, well past the error threshold. RNA is also chemically unstable since its $2'$-OH group makes it susceptible to hydrolysis. A human with RNA genes would rapidly accumulate errors that destroy genetic information faster than it can be replicated, making stable complex life impossible.
+\textbf{(c)} RNA is single-stranded, so there is no complementary strand to use for proofreading. With an error rate of $1/1000$ to $1/10{,}000$ and a human genome of 3 billion bases, every replication cycle would introduce millions of mutations. RNA is also chemically unstable since its $2'$-OH group makes it susceptible to hydrolysis. A human with RNA genes would rapidly accumulate errors that destroy genetic information faster than it can be replicated, making stable complex life impossible.
 
 \section*{2. $^{12}$C--$^{13}$C Fractionation}
 
-\textbf{(a)} Using $m_\text{proton} = m_\text{neutron} = 1.67 \times 10^{-27}$ kg:
+\textbf{(a)}
+
+\[
+m_\text{proton} = m_\text{neutron} = 1.67 \times 10^{-27} kg
+\]
 \[
 m_{^{12}\text{C}} = 12 \times 1.67\times10^{-27}\ \text{kg} = 2.004\times10^{-26}\ \text{kg}
 \]
@@ -52,35 +56,14 @@ E_1(^{12}\text{C}) = \frac{4.390\times10^{-67}}{6.413\times10^{-45}} = 6.85\time
 E_1(^{13}\text{C}) = \frac{4.390\times10^{-67}}{6.947\times10^{-45}} = 6.32\times10^{-23}\ \text{J}\ \approx 0.394\ \text{meV}
 \]
 
-The $n=1$ wavefunction is a half-sine with no internal nodes; both isotopes have the same wave shape. Because $^{12}$C is lighter, it has a higher ground-state (zero-point) energy.
+The $n=1$ wavefunction is the lowest energy state with one node. Both isotopes will have the same wave shape, but because $^{12}$C is lighter, it has a higher ground-state energy.
 
-\begin{center}
-\begin{tikzpicture}[scale=1.1]
-  % Box walls
-  \draw[thick] (0,0) -- (0,2.5);
-  \draw[thick] (4,0) -- (4,2.5);
-  \draw[thick] (0,0) -- (4,0);
-
-  % 12C energy level (higher)
-  \draw[dashed, gray] (0,1.8) -- (4,1.8);
-  \node[right] at (4.05,1.8) {\footnotesize $E_1(^{12}\text{C})$};
-  % 12C wave
-  \draw[blue, thick, domain=0:4, samples=60]
-    plot (\x, {0.5*sin(deg(3.14159*\x/4)) + 1.8});
-
-  % 13C energy level (lower)
-  \draw[dashed, gray] (0,1.2) -- (4,1.2);
-  \node[right] at (4.05,1.2) {\footnotesize $E_1(^{13}\text{C})$};
-  % 13C wave
-  \draw[red, thick, domain=0:4, samples=60]
-    plot (\x, {0.4*sin(deg(3.14159*\x/4)) + 1.2});
-
-  \node[blue] at (2, 2.45) {\footnotesize $^{12}$C};
-  \node[red] at (2, 0.75) {\footnotesize $^{13}$C};
-
-  \node[below] at (2, -0.15) {\footnotesize $L = 0.2\ \text{nm}$};
-\end{tikzpicture}
-\end{center}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\linewidth]{NBMetadataCache.png}
+    \caption{TODO: add caption}
+    \label{fig:placeholder}
+\end{figure}
 
 \textbf{(c)} Let $E_\text{ts}$ be the (same) transition-state energy for both isotopes. The activation energy for each is:
 \[
