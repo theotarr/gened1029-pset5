@@ -1,0 +1,155 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath, amssymb}
+\usepackage{enumitem}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{placeins}
+\usepackage{booktabs}
+
+\title{HW \#5}
+\author{Theo Tarr}
+\date{March 5, 2026}
+
+\begin{document}
+\maketitle
+
+\section*{1. Reading-Related Question}
+
+\textbf{(a)} The \textit{primitive soup} hypothesis (Oparin–Haldane) proposes that life originated in a dilute aqueous environment — an early ocean or pond — rich in organic molecules such as amino acids and nucleotides, formed by UV light and lightning acting on simple gases. A key weakness is the \textit{dilution problem}: in a large ocean the concentrations of reactants would be far too low for polymerization to occur at any appreciable rate, and water also hydrolyzes the very polymers being formed.
+
+The \textit{primitive pizza} (mineral surface) hypothesis proposes instead that life began on the surfaces of minerals such as pyrite or clay. Organic molecules adsorb onto these surfaces, which concentrates them and provides a catalytic scaffold for polymerization. This directly addresses the dilution problem: surface adsorption replaces the need for improbable high-concentration encounters in open solution.
+
+\textbf{(b)} Without replicase enzymes, nucleotide replication has an error rate of roughly $1/100$ (about $10^{-2}$ per nucleotide). With replicase but without proofreading, the error rate drops to roughly $1/1000$--$1/10{,}000$ (about $10^{-3}$ to $10^{-4}$). The enzymatic increase in fidelity is therefore about $10$--$100\times$. This is expected: replicase enzymes select correct nucleotides via base-pairing geometry, increasing specificity. However, without proofreading, errors remain frequent enough to limit the maximum stable genome size (the error threshold), so larger genomes require additional error-correction machinery.
+
+\textbf{(c)} RNA is far less chemically stable than DNA. The $2'$-OH group on the ribose makes RNA susceptible to spontaneous hydrolysis (cleavage of the phosphodiester backbone). DNA avoids this through the absence of that hydroxyl group. Additionally, RNA is single-stranded, so there is no complementary strand to use as a template for mismatch repair. In a human, encoding genes in RNA rather than DNA would mean the genome would degrade rapidly through hydrolysis and could not be faithfully repaired. Combined with the higher intrinsic mutation rate, error accumulation (error catastrophe) would destroy genetic information faster than replication could preserve it, making complex, stable organisms like humans impossible.
+
+\section*{2. $^{12}$C--$^{13}$C Fractionation}
+
+\textbf{(a)} Using $m_\text{proton} = m_\text{neutron} = 1.67 \times 10^{-27}$ kg:
+\[
+m_{^{12}\text{C}} = 12 \times 1.67\times10^{-27}\ \text{kg} = 2.004\times10^{-26}\ \text{kg}
+\]
+\[
+m_{^{13}\text{C}} = 13 \times 1.67\times10^{-27}\ \text{kg} = 2.171\times10^{-26}\ \text{kg}
+\]
+
+\textbf{(b)} For a particle in a box of width $L = 0.2\ \text{nm} = 2\times10^{-10}\ \text{m}$:
+\[
+E_n = \frac{n^2 h^2}{8mL^2}
+\]
+
+For $n=1$:
+\[
+E_1 = \frac{h^2}{8mL^2} = \frac{(6.626\times10^{-34})^2}{8 \times m \times (2\times10^{-10})^2}
+= \frac{4.390\times10^{-67}}{8 \times m \times 4\times10^{-20}}
+\]
+\[
+E_1(^{12}\text{C}) = \frac{4.390\times10^{-67}}{6.413\times10^{-45}} = 6.85\times10^{-23}\ \text{J}\ \approx 0.427\ \text{meV}
+\]
+\[
+E_1(^{13}\text{C}) = \frac{4.390\times10^{-67}}{6.947\times10^{-45}} = 6.32\times10^{-23}\ \text{J}\ \approx 0.394\ \text{meV}
+\]
+
+The $n=1$ wavefunction is a half-sine with no internal nodes; both isotopes have the same wave shape. Because $^{12}$C is lighter, it has a higher ground-state (zero-point) energy.
+
+\begin{center}
+\begin{tikzpicture}[scale=1.1]
+  % Box walls
+  \draw[thick] (0,0) -- (0,2.5);
+  \draw[thick] (4,0) -- (4,2.5);
+  \draw[thick] (0,0) -- (4,0);
+
+  % 12C energy level (higher)
+  \draw[dashed, gray] (0,1.8) -- (4,1.8);
+  \node[right] at (4.05,1.8) {\footnotesize $E_1(^{12}\text{C})$};
+  % 12C wave
+  \draw[blue, thick, domain=0:4, samples=60]
+    plot (\x, {0.5*sin(deg(3.14159*\x/4)) + 1.8});
+
+  % 13C energy level (lower)
+  \draw[dashed, gray] (0,1.2) -- (4,1.2);
+  \node[right] at (4.05,1.2) {\footnotesize $E_1(^{13}\text{C})$};
+  % 13C wave
+  \draw[red, thick, domain=0:4, samples=60]
+    plot (\x, {0.4*sin(deg(3.14159*\x/4)) + 1.2});
+
+  \node[blue] at (2, 2.45) {\footnotesize $^{12}$C};
+  \node[red] at (2, 0.75) {\footnotesize $^{13}$C};
+
+  \node[below] at (2, -0.15) {\footnotesize $L = 0.2\ \text{nm}$};
+\end{tikzpicture}
+\end{center}
+
+\textbf{(c)} Let $E_\text{ts}$ be the (same) transition-state energy for both isotopes. The activation energy for each is:
+\[
+E_a = E_\text{ts} - E_1
+\]
+Since rate $\propto e^{-E_a/k_BT}$, the ratio is:
+\[
+\frac{\text{rate}(^{12}\text{C})}{\text{rate}(^{13}\text{C})}
+= \frac{e^{-(E_\text{ts}-E_1^{12})/k_BT}}{e^{-(E_\text{ts}-E_1^{13})/k_BT}}
+= e^{(E_1^{12}-E_1^{13})/k_BT}
+\]
+\[
+\Delta E = E_1(^{12}\text{C}) - E_1(^{13}\text{C}) = 6.85\times10^{-23} - 6.32\times10^{-23} = 5.3\times10^{-24}\ \text{J}
+\]
+\[
+k_BT = (1.381\times10^{-23})(300) = 4.14\times10^{-21}\ \text{J}
+\]
+\[
+\frac{\Delta E}{k_BT} = \frac{5.3\times10^{-24}}{4.14\times10^{-21}} = 1.28\times10^{-3}
+\]
+\[
+\frac{\text{rate}(^{12}\text{C})}{\text{rate}(^{13}\text{C})} = e^{1.28\times10^{-3}} \approx \boxed{1.00128}
+\]
+$^{12}$C reacts about $0.13\%$ faster than $^{13}$C, consistent with the observed kinetic isotope fractionation in photosynthesis.
+
+\textbf{(d)} At higher temperature, $k_BT$ increases, so $\Delta E/k_BT$ decreases and the rate ratio approaches 1. The fractionation effect is reduced: both isotopes react at nearly the same rate, and the $^{12}$C/$^{13}$C discrimination by plants weakens.
+
+\textbf{(e)} For $^{13}$C to react faster, its activation energy must be smaller: $E_a(^{13}\text{C}) < E_a(^{12}\text{C})$. Since $E_1(^{12}\text{C}) > E_1(^{13}\text{C})$, this requires the \textit{transition state} to also have quantized zero-point energy, with $E_\text{ts}(^{12}\text{C})$ exceeding $E_\text{ts}(^{13}\text{C})$ by \textit{more} than the difference in their ground-state energies. This occurs when the bond to the carbon atom is \textit{tighter} (stiffer) in the transition state than in the reactant, giving $^{12}$C a larger zero-point energy penalty at the transition state. This is the origin of inverse kinetic isotope effects.
+
+\section*{3. First Cells}
+
+\textbf{(a)} The RNA strand inside the vesicle replicates, consuming free nucleotides and incorporating them into large polymers. Since the membrane is impermeable to polymers, the RNA chains cannot leave. This lowers the free nucleotide concentration inside the vesicle relative to outside, creating a concentration gradient. Single nucleotides then diffuse down this gradient, flowing inward faster than they exit, until equilibrium is approached.
+
+\textbf{(b)} Water moves by osmosis from regions of low solute concentration (high water activity) to regions of high solute concentration (low water activity). A higher total concentration of RNA polymers inside the vesicle means the interior has lower water activity than the exterior. Water therefore flows into the vesicle until the osmotic pressure is balanced by the membrane tension.
+
+\textbf{(c)} Vesicles with higher RNA concentrations have a greater osmotic pressure drawing water inward, so they swell and grow. To accommodate this growth, they also absorb fatty acid molecules from solution, pulling them away from vesicles with lower RNA concentrations. The low-RNA vesicles therefore lose membrane material and shrink. This creates competition among vesicles: those that replicate RNA more effectively grow at the expense of less productive ones. This is a form of natural selection at the level of primitive cells — a Darwinian process in which "fitter" (more productive) vesicles propagate, directly linking RNA replication fidelity to vesicle survival and growth.
+
+\textbf{(d)} The first cells had no helicase enzymes or other active machinery to separate the double-stranded RNA. Strand separation could instead be achieved by \textit{thermal cycling}: hydrothermal environments cycle between high and low temperatures, and at elevated temperatures the two strands would denature (melt apart) as hydrogen bonds break. Upon cooling, each single strand could then act as a template for a new complementary strand. This passive, thermally-driven mechanism requires no molecular machinery and is consistent with a prebiotic hydrothermal origin scenario.
+
+\section*{4. Handedness}
+
+\textbf{(a)} Using the Boltzmann distribution with $\Delta E = 10^{-17}\ \text{eV}$ (L favored):
+\[
+\frac{P(L)}{P(D)} = e^{\Delta E / k_BT}
+\]
+\[
+k_BT = (8.617\times10^{-5}\ \text{eV/K})(295\ \text{K}) = 0.02542\ \text{eV}
+\]
+\[
+\frac{\Delta E}{k_BT} = \frac{10^{-17}}{0.02542} = 3.93\times10^{-16}
+\]
+\[
+\frac{P(L)}{P(D)} = e^{3.93\times10^{-16}} \approx 1 + 3.93\times10^{-16} \approx \boxed{1.000\,000\,000\,000\,000\,4}
+\]
+The two forms are present in essentially equal probability at room temperature — the L-form is favored by only about 1 part in $10^{16}$.
+
+\textbf{(b)} We want $P(D)/P(L) = 0.1$, i.e., $P(L)/P(D) = 10$:
+\[
+e^{\Delta E / k_BT} = 10
+\qquad\Rightarrow\qquad
+k_BT = \frac{\Delta E}{\ln 10} = \frac{10^{-17}\ \text{eV}}{2.303} = 4.34\times10^{-18}\ \text{eV}
+\]
+\[
+T = \frac{4.34\times10^{-18}\ \text{eV}}{8.617\times10^{-5}\ \text{eV/K}} \approx \boxed{5.04\times10^{-14}\ \text{K}}
+\]
+This is an unphysically low temperature, far below any achievable in nature.
+
+\textbf{(c)} No. The relative probability difference from the weak force at room temperature is only $\sim 10^{-16}$, which is far too small to drive the near-complete homochirality ($\sim$100\% L-amino acids) observed in biology. The weak force effect alone could not account for this bias.
+
+\textbf{(d)} An alternative explanation for homochirality is \textit{amplification through autocatalysis}: a small initial chiral imbalance (which could be random, or seeded by circularly polarized UV light from a neutron star that preferentially destroys one enantiomer) is amplified to homochirality through asymmetric autocatalysis, where one chiral form catalyzes its own production while suppressing the other.
+
+\end{document}
