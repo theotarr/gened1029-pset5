@@ -39,8 +39,10 @@ m_{^{12}\text{C}} = 12 \times 1.67\times10^{-27}\ \text{kg} = 2.004\times10^{-26
 m_{^{13}\text{C}} = 13 \times 1.67\times10^{-27}\ \text{kg} = 2.171\times10^{-26}\ \text{kg}
 \]
 
-\textbf{(b)} Using $E_1 = \frac{h^2}{8mL^2}$ with $L = 2\times10^{-10}\ \text{m}$ and $h = 6.626\times10^{-34}\ \text{J\,s}$:
-
+\textbf{(b)}
+\[
+E_1 = \frac{h^2}{8mL^2}
+\]
 \[
 E_1(^{12}\text{C}) = \frac{(6.626\times10^{-34})^2}{8 \times 2.004\times10^{-26} \times (2\times10^{-10})^2}
 = 6.85\times10^{-23}\ \text{J}
@@ -59,7 +61,7 @@ E_1(^{13}\text{C}) = \frac{(6.626\times10^{-34})^2}{8 \times 2.171\times10^{-26}
     \label{fig:placeholder}
 \end{figure}
 
-\textbf{(c)} Both isotopes have the same transition-state energy $E_\text{ts}$, so their activation energies are $E_a = E_\text{ts} - E_1$. Since $^{12}$C has a higher $E_1$, it has a lower activation energy and reacts faster. The $E_\text{ts}$ terms cancel in the ratio:
+\textbf{(c)} Both isotopes have the same transition-state energy $E_\text{ts}$, so their activation energies are $E_a = E_\text{ts} - E_1$. Since $^{12}$C has a higher $E_1$, it has a lower activation energy and reacts faster.
 \[
 \frac{\text{rate}(^{12}\text{C})}{\text{rate}(^{13}\text{C})}
 = e^{(E_1^{12}-E_1^{13})/k_BT}
@@ -89,9 +91,12 @@ $^{12}$C reacts about $0.13\%$ faster, consistent with observed isotope fraction
 
 \section*{4.}
 
-\textbf{(a)} The L-form is favored by $\Delta E = 10^{-17}\ \text{eV}$, so the probability ratio is:
+\textbf{(a)}
 \[
-\frac{P(L)}{P(D)} = e^{\Delta E / k_BT}, \qquad k_BT = (8.617\times10^{-5})(295) = 0.02542\ \text{eV}
+\frac{P(L)}{P(D)} = e^{\Delta E / k_BT}
+\]
+\[
+\Delta E = 10^{-17}\ \text{eV}, \qquad k_BT = (8.617\times10^{-5})(295) = 0.02542\ \text{eV}
 \]
 \[
 \frac{P(L)}{P(D)} = e^{10^{-17}/0.02542} = e^{3.93\times10^{-16}} \approx \boxed{1 + 3.93\times10^{-16}}
@@ -99,9 +104,12 @@ $^{12}$C reacts about $0.13\%$ faster, consistent with observed isotope fraction
 The two forms are essentially equally probable at room temperature. The L-form advantage is only 1 part in $10^{16}$.
 
 
-\textbf{(b)} For $P(D)/P(L) = 0.1$:
+\textbf{(b)}
 \[
-e^{-\Delta E / k_BT} = 0.1 \implies -\frac{\Delta E}{k_BT} = \ln(0.1) = -2.303 \implies k_BT = \frac{\Delta E}{2.303} = \frac{10^{-17}}{2.303} = 4.34\times10^{-18}\ \text{eV}
+\frac{P(D)}{P(L)} = e^{-\Delta E / k_BT}
+\]
+\[
+e^{-\Delta E / k_BT} = 0.1 \implies k_BT = \frac{\Delta E}{\ln 10} = \frac{10^{-17}}{2.303} = 4.34\times10^{-18}\ \text{eV}
 \]
 \[
 T = \frac{4.34\times10^{-18}}{8.617\times10^{-5}} \approx \boxed{5.04\times10^{-14}\ \text{K}}
